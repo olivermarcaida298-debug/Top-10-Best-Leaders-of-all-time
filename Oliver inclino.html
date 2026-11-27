@@ -1,0 +1,669 @@
+<html>
+<head>
+<title>The Historical Archive</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #2b1c12;
+    color: #3b2918;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+/* HEADER */
+header {
+    text-align: center;
+    padding: 35px 20px;
+    background: #3b2618;
+    color: #e5d1a5;
+    border-bottom: 4px solid #a88746;
+}
+
+header h1 {
+    font-size: 38px;
+    letter-spacing: 5px;
+    margin: 0;
+}
+
+header p {
+    font-style: italic;
+    color: #c9b48a;
+}
+
+/* NAVIGATION */
+nav {
+    text-align: center;
+    background: #5b3c25;
+    padding: 16px;
+    border-bottom: 2px solid #b3945b;
+}
+
+nav a {
+    color: #f0dfbd;
+    text-decoration: none;
+    margin: 15px;
+    letter-spacing: 2px;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #e6bd68;
+}
+
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 75px 20px;
+    background: #d2bd94;
+    background-image:
+        radial-gradient(#bda77e 1px, transparent 1px);
+    background-size: 8px 8px;
+    border-bottom: 8px double #72502d;
+}
+
+.hero h2 {
+    font-size: 42px;
+    color: #4b2e18;
+    letter-spacing: 4px;
+}
+
+.hero p {
+    color: #61452b;
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.gold-line {
+    width: 130px;
+    height: 3px;
+    background: #8c642f;
+    margin: 25px auto;
+}
+
+.hero button {
+    background: #4b2e18;
+    color: #e8d4a7;
+    border: 2px solid #967343;
+    padding: 13px 25px;
+    font-family: Georgia, serif;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+.hero button:hover {
+    background: #79502c;
+}
+
+/* SLIDESHOW */
+.slideshow {
+    padding: 45px 20px;
+    background: #3a281b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 600px;
+}
+
+/* PARCHMENT SLIDE */
+.slide {
+    display: none;
+    width: 100%;
+    max-width: 950px;
+    min-height: 460px;
+    padding: 50px;
+
+    background-color: #e4d2ad;
+    background-image:
+        radial-gradient(#c8b38b 0.7px, transparent 0.7px);
+    background-size: 5px 5px;
+
+    border: 12px double #79552f;
+    outline: 2px solid #c2a46c;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.5),
+        inset 0 0 35px rgba(101,66,30,0.25);
+
+    animation: fade 0.5s;
+}
+
+.slide.active {
+    display: block;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* LEADER DETAILS */
+.rank {
+    font-size: 60px;
+    color: #8a642f;
+    margin: 0;
+    font-weight: bold;
+}
+
+.country {
+    color: #78522b;
+    letter-spacing: 4px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.slide h2 {
+    font-size: 40px;
+    color: #4b2e18;
+    margin-top: 10px;
+}
+
+.line {
+    width: 100px;
+    height: 3px;
+    background: #96703b;
+    margin: 20px 0;
+}
+
+.description {
+    color: #493521;
+    font-size: 18px;
+    line-height: 1.9;
+}
+
+.achievement {
+    color: #6b4726;
+    font-size: 16px;
+    line-height: 1.8;
+    padding: 15px;
+    background: rgba(130, 91, 45, 0.1);
+    border-left: 4px solid #96703b;
+}
+
+/* BUTTONS */
+.controls {
+    text-align: center;
+    padding: 25px;
+    background: #5b3c25;
+}
+
+.controls button {
+    background: #d4bd91;
+    color: #3b2618;
+    border: 2px solid #b18b4d;
+    padding: 12px 25px;
+    margin: 8px;
+    font-family: Georgia, serif;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.controls button:hover {
+    background: #f0dfbd;
+}
+
+#counter {
+    color: #f0dfbd;
+    font-size: 18px;
+    margin: 15px;
+}
+
+/* NUMBER MENU */
+.leader-menu {
+    text-align: center;
+    padding: 30px 15px;
+    background: #302014;
+    color: #e4d1a7;
+}
+
+.leader-menu h3 {
+    letter-spacing: 3px;
+    color: #d2b276;
+}
+
+.leader-menu button {
+    background: #5b3c25;
+    color: #e8d4a7;
+    border: 1px solid #b3945b;
+    padding: 10px 15px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.leader-menu button:hover {
+    background: #b3945b;
+    color: #2b1c12;
+}
+
+/* ABOUT */
+.about {
+    text-align: center;
+    padding: 60px 25px;
+    background: #d2bd94;
+    border-top: 8px double #72502d;
+    border-bottom: 8px double #72502d;
+}
+
+.about h2 {
+    color: #4b2e18;
+    font-size: 32px;
+}
+
+.about p {
+    max-width: 700px;
+    margin: 20px auto;
+    color: #61452b;
+    line-height: 1.9;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 30px;
+    background: #21150d;
+    color: #c9b48a;
+}
+
+footer h3 {
+    color: #d2b276;
+    letter-spacing: 4px;
+}
+
+/* MOBILE */
+@media screen and (max-width: 600px) {
+
+    header h1 {
+        font-size: 25px;
+        letter-spacing: 3px;
+    }
+
+    nav a {
+        display: inline-block;
+        margin: 8px;
+        font-size: 12px;
+    }
+
+    .hero h2 {
+        font-size: 30px;
+    }
+
+    .slideshow {
+        padding: 15px;
+    }
+
+    .slide {
+        padding: 25px;
+        min-height: 500px;
+        border-width: 7px;
+    }
+
+    .slide h2 {
+        font-size: 28px;
+    }
+
+    .rank {
+        font-size: 45px;
+    }
+
+    .description {
+        font-size: 16px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>THE HISTORICAL ARCHIVE</h1>
+    <p>Preserving the stories of great leaders</p>
+</header>
+
+<nav>
+    <a href="#home">HOME</a>
+    <a href="#slides">LEADERS</a>
+    <a href="#about">ABOUT</a>
+</nav>
+
+<!-- HOME -->
+<section class="hero" id="home">
+
+    <h2>THE BEST LEADERS OF ALL TIME</h2>
+
+    <div class="gold-line"></div>
+
+    <p>
+        Discover the stories of remarkable people
+        who changed the course of history.
+    </p>
+
+    <p>
+        A collection of courage, wisdom, power, and legacy.
+    </p>
+
+    <a href="#slides">
+        <button>OPEN THE ARCHIVE</button>
+    </a>
+
+</section>
+
+<!-- SLIDES -->
+<div class="slideshow" id="slides">
+
+    <div class="slide active">
+        <p class="rank">I</p>
+        <p class="country">SOUTH AFRICA</p>
+        <h2>Nelson Mandela</h2>       <img src="nelson.jpg"  
+width="300" height="300">
+        <div class="line"></div>
+
+        <p class="description">
+            Nelson Mandela fought against apartheid and racial
+            discrimination. He spent 27 years in prison for his
+            struggle for freedom. After his release, he promoted
+            peace, equality, and reconciliation.
+        </p>
+
+        <p class="achievement">
+            <b>Historical Legacy:</b> First Black president of
+            South Africa and a global symbol of freedom.
+        </p>
+    </div>
+
+    <div class="slide">
+        <p class="rank">II</p>
+        <p class="country">UNITED STATES</p>
+        <h2>Abraham Lincoln</h2>
+<img src="llincon.jpg"  
+width="300" height="300">
+        <div class="line"></div>
+
+        <p class="description">
+            Abraham Lincoln was the 16th president of the United States.
+            He led the nation during the Civil War and worked to end
+            slavery. His leadership helped preserve the Union.
+        </p>
+
+        <p class="achievement">
+            <b>Historical Legacy:</b> Preserved the Union and
+            helped abolish slavery.
+        </p>
+    </div>
+
+    <div class="slide">
+        <p class="rank">III</p>
+        <p class="country">INDIA</p>
+        <h2>Mahatma Gandhi</h2>
+<img scr="mahat.jpg" width="300" height="300">
+        <div class="line"></div>
+
+        <p class="description">
+            Mahatma Gandhi led India's independence movement
+            through peaceful resistance. He believed in nonviolence,
+            truth, and justice as powerful ways to create change.
+        </p>
+
+        <p class="achievement">
+            <b>Historical Legacy:</b> Inspired peaceful movements
+            for freedom around the world.
+        </p>
+    </div>
+
+    <div class="slide">
+        <p class="rank">IV</p>
+        <p class="country">UNITED STATES</p>
+        <h2>Martin Luther King Jr.</h2>
+<img scr="martin.jpg" width="300" height="300">
+        <div class="line"></div>
+
+        <p class="description">
+            Martin Luther King Jr. was a civil rights leader who
+            peacefully fought racial discrimination. Through speeches
+            and demonstrations, he promoted equality and justice.
+        </p>
+
+        <p class="achievement">
+            <b>Historical Legacy:</b> A leading figure in the
+            American civil rights movement.
+        </p>
+    </div>
+
+    <div class="slide">
+        <p class="rank">V</p>
+        <p class="country">UNITED KINGDOM</p>
+        <h2>Winston Churchill</h2>
+<img scr="winston.jpg" width="300" height="300">
+        <div class="line"></div>
+
+        <p class="description">
+            Winston Churchill served as British prime minister during
+            World War II. He was known for his determination,
+            speeches, and leadership during wartime.
+        </p>
+
+        <p class="achievement">
+            <b>Historical Legacy:</b> A major leader during
+            World War II.
+        </p>
+    </div>
+
+    <div class="slide">
+        <p class="rank">VI</p>
+        <p class="country">MACEDONIA</p>
+        <h2>Alexander the Great</h2>
+<img scr="alexander.jpg" width="300" height="300">
+        <div class="line"></div>
+
+        <p class="description">
+            Alexander the Great was a military commander who
+            conquered a vast empire from Greece to Egypt and parts
+            of Asia. He was known for his military strategy and ambition.
+        </p>
+
+        <p class="achievement">
+            <b>Historical Legacy:</b> Spread Greek culture
+            throughout many conquered territories.
+        </p>
+    </div>
+
+    <div class="slide">
+        <p class="rank">VII</p>
+        <p class="country">ANCIENT ROME</p>
+        <h2>Julius Caesar</h2>
+<img scr="julius.jpg" width="300" height="300">
+        <div class="line"></div>
+
+        <p class="description">
+            Julius Caesar was a Roman general and politician whose
+            military victories and political reforms transformed
+            Roman history. He became one of the most influential
+            figures in ancient Rome.
+        </p>
+
+        <p class="achievement">
+            <b>Historical Legacy:</b> Played a major role in
+            the transformation of the Roman Republic.
+        </p>
+    </div>
+
+    <div class="slide">
+        <p class="rank">VIII</p>
+        <p class="country">ENGLAND</p>
+        <h2>Queen Elizabeth I</h2>
+<img scr="Elizabeth.jpg" width="300" height="300">
+        <div class="line"></div>
+
+        <p class="description">
+            Queen Elizabeth I ruled England during a period of
+            cultural development, political stability, and
+            expansion of influence. Her reign became known
+            as the Elizabethan Era.
+        </p>
+
+        <p class="achievement">
+            <b>Historical Legacy:</b> Remembered for her long reign
+            and the flourishing of English culture.
+        </p>
+    </div>
+
+    <div class="slide">
+        <p class="rank">IX</p>
+        <p class="country">UNITED STATES</p>
+        <h2>Franklin D. Roosevelt</h2>
+<img scr="franklin.jpg" width="300" height="300">
+        <div class="line"></div>
+
+        <p class="description">
+            Franklin D. Roosevelt led the United States during
+            the Great Depression and World War II. He introduced
+            the New Deal programs to support economic recovery.
+        </p>
+
+        <p class="achievement">
+            <b>Historical Legacy:</b> Led America through
+            major economic and wartime challenges.
+        </p>
+    </div>
+
+    <div class="slide">
+        <p class="rank">X</p>
+        <p class="country">PHILIPPINES</p>
+        <h2>Jose Rizal</h2>
+<img scr="jose.jpg"  width="300" height="300">
+        <div class="line"></div>
+
+        <p class="description">
+            Jose Rizal was a Filipino writer, doctor, and reformist.
+            His novels exposed injustices during Spanish colonial rule
+            and inspired Filipino nationalism and the desire for freedom.
+        </p>
+
+        <p class="achievement">
+            <b>Historical Legacy:</b> Philippine national hero
+            whose writings helped inspire the movement for reform
+            and independence.
+        </p>
+    </div>
+
+</div>
+
+<!-- CONTROLS -->
+<div class="controls">
+
+    <button onclick="previousSlide()">❮ PREVIOUS</button>
+
+    <span id="counter">1 / 10</span>
+
+    <button onclick="nextSlide()">NEXT ❯</button>
+
+</div>
+
+<!-- NUMBER MENU -->
+<div class="leader-menu">
+
+    <h3>ARCHIVE INDEX</h3>
+
+    <p>Select a chapter</p>
+
+    <button onclick="goToSlide(0)">I</button>
+    <button onclick="goToSlide(1)">II</button>
+    <button onclick="goToSlide(2)">III</button>
+    <button onclick="goToSlide(3)">IV</button>
+    <button onclick="goToSlide(4)">V</button>
+    <button onclick="goToSlide(5)">VI</button>
+    <button onclick="goToSlide(6)">VII</button>
+    <button onclick="goToSlide(7)">VIII</button>
+    <button onclick="goToSlide(8)">IX</button>
+    <button onclick="goToSlide(9)">X</button>
+
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+
+    <h2>ABOUT THE ARCHIVE</h2>
+
+    <div class="gold-line"></div>
+
+    <p>
+        This historical archive presents ten influential leaders
+        whose actions, ideas, and decisions shaped the world.
+        Their stories remind us that history is full of lessons
+        about courage, responsibility, sacrifice, and leadership.
+    </p>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <h3>THE HISTORICAL ARCHIVE</h3>
+    <p>Preserving the past for future generations.</p>
+    <p>© 2026 | History Project</p>
+</footer>
+
+<script>
+
+let currentSlide = 0;
+
+let slides = document.getElementsByClassName("slide");
+
+function showSlide(number) {
+
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].classList.remove("active");
+    }
+
+    slides[number].classList.add("active");
+
+    document.getElementById("counter").innerHTML =
+        (number + 1) + " / " + slides.length;
+}
+
+function nextSlide() {
+
+    currentSlide++;
+
+    if (currentSlide >= slides.length) {
+        currentSlide = 0;
+    }
+
+    showSlide(currentSlide);
+}
+
+function previousSlide() {
+
+    currentSlide--;
+
+    if (currentSlide < 0) {
+        currentSlide = slides.length - 1;
+    }
+
+    showSlide(currentSlide);
+}
+
+function goToSlide(number) {
+
+    currentSlide = number;
+
+    showSlide(currentSlide);
+
+    document.getElementById("slides").scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+</script>
+
+</body>
+</html><link rel="stylesheet" href=""><title></title><title></title>
